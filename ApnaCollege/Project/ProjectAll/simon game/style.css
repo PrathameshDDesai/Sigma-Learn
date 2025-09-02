@@ -1,0 +1,53 @@
+body {
+  text-align: center;
+  background: #1d3557;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+
+h1 {
+  margin-top: 20px;
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+.btn-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 50px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn {
+  height: 200px;
+  width: 200px;
+  margin: 10px;
+  border-radius: 20%;
+  border: 8px solid #fff;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Button colors */
+#red { background-color: #e63946; }
+#blue { background-color: #457b9d; }
+#green { background-color: #2a9d8f; }
+#yellow { background-color: #f4a261; }
+
+/* Hover effect */
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* Flash effect: white inside only */
+.btn.flash {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  box-shadow: 0 8px 20px rgba(255,255,255,0.9);
+}

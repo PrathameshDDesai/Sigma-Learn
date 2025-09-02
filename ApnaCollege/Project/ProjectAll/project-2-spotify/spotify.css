@@ -1,0 +1,435 @@
+body {
+  font-family: "Libertinus Sans", sans-serif;
+  margin: 0;
+  background-color: black;
+  color: white;
+  overflow: hidden;
+}
+
+.main {
+  display: flex;
+  height: 100vh;
+  padding-bottom: 72px; /* prevents content being hidden behind music player */
+}
+
+.sidebar {
+  width: 340px;
+  background-color: black;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+.main-content {
+  flex: 1;
+  background-color: #121212;
+  border-radius: 1rem;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.music-player {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 72px;
+  background-color: black;
+  z-index: 1000; /* stays above everything */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #282828;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.nav {
+  background-color: #121212;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5rem 0.75rem;
+}
+
+.nav-option {
+  display: flex;
+  align-items: center;
+  line-height: 2.5rem;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.nav-option:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.nav-option i {
+  font-size: 1.25rem;
+}
+
+.nav-option a {
+  font-size: 1rem;
+  margin-left: 1rem;
+}
+
+.library {
+  background-color: #121212;
+  border-radius: 1rem;
+  padding: 0.5rem 0.75rem;
+  margin-top: 0.5rem;
+  height: 100%;
+}
+
+.lib-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lib-option {
+  display: flex;
+  align-items: center;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.lib-option:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.lib-option img {
+  width: 24px;
+  height: 24px;
+  margin-right: 1rem;
+}
+
+.lib-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.lib-actions i {
+  font-size: 1.5rem;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.lib-actions i:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.box {
+  height: 8rem;
+  background-color: #232323;
+  border-radius: 0.75rem;
+  margin: 0.75rem 0 1.75rem 0;
+  padding: 1rem 1.25rem;
+}
+
+.box-p1 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.box-p2 {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.badge {
+  background-color: white;
+  border: none;
+  border-radius: 100px;
+  padding: 0.25rem 1rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+  height: 2rem;
+  width: fit-content;  /* ✅ fixed from fix-content */
+  text-align: center;
+  color: black;
+}
+
+.dark-badge {
+  background-color: black;
+  color: white;
+}
+
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #121212;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  flex: 0%;
+}
+
+
+.sticky-nav-icons img {
+  width: 25px;
+  margin: 0 8px;
+}
+
+.sticky-nav-download {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-item {
+  margin-right: 1rem;
+}
+
+/* ✅ Media Query at the very end */
+@media (max-width: 1000px) {
+  .sticky-nav-icons img.hide {
+    display: none !important;
+  }
+}
+@media (max-width: 1000px) {
+  /* Hide forward arrow */
+  .sticky-nav-icons img.hide {
+    display: none !important;
+  }
+
+  /* Hide Explore Premium button */
+  .sticky-nav-download .nav-item:first-child {
+    display: none !important;
+  }
+}
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 24px;              /* spacing between cards */
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.card {
+  background-color: #181818;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  background-color: #282828;
+  transform: scale(1.05);   /* slight zoom on hover */
+}
+
+.card-img {
+  width: 100%;
+  border-radius: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.card-title {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  text-align: left;         /* keep Spotify-like alignment */
+}
+
+.card-info {
+  font-size: 0.85rem;
+  color: #b3b3b3;
+  opacity: 0.9;
+  text-align: left;
+}
+
+
+.footer {
+  height: 120px;                  /* smaller height, modern look */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #121212;      /* dark background */
+  padding: 20px 0;
+  margin-top: 20px;
+  flex-direction: column;         /* so line + text stack nicely */
+}
+
+.line {
+  width: 90%;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);  /* subtle divider */
+  margin-bottom: 15px;            /* spacing below line */
+}
+
+.footer-text {
+  color: #b3b3b3;                 /* light gray text */
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.music-player {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 90px;
+  background-color: #181818;
+  border-top: 1px solid #282828;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  z-index: 1000;
+}
+
+.player-left, .player-center, .player-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.player-left {
+  width: 25%;
+}
+.player-center {
+  width: 50%;
+  flex-direction: column;
+}
+.player-right {
+  width: 25%;
+  justify-content: flex-end;
+}
+
+.player-img {
+  width: 55px;
+  height: 55px;
+  border-radius: 5px;
+}
+
+.song-info {
+  display: flex;
+  flex-direction: column;
+}
+.song-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.song-artist {
+  font-size: 0.75rem;
+  color: #b3b3b3;
+}
+
+.controls i {
+  font-size: 1.4rem;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+.controls i:hover {
+  opacity: 1;
+}
+
+.play-btn {
+  font-size: 2.2rem;
+}
+
+.progress-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+.progress-bar input[type="range"] {
+  flex: 1;
+  accent-color: #1db954; /* Spotify green */
+}
+
+.current-time, .total-time {
+  font-size: 0.75rem;
+  color: #b3b3b3;
+}
+
+.player-right i {
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0.8;
+}
+.player-right i:hover {
+  opacity: 1;
+}
+.player-right input[type="range"] {
+  width: 80px;
+  accent-color: #1db954;
+}
+
+
+/* ===== UNIVERSAL HOVER EFFECTS ===== */
+
+/* Hover for sidebar & nav links */
+.sidebar a:hover, 
+.nav-option:hover a {
+  color: #1db954;   /* Spotify green */
+  transition: color 0.3s ease;
+}
+
+/* Hover for icons */
+.sidebar i:hover,
+.nav-option i:hover,
+.lib-actions i:hover,
+.player-right i:hover,
+.controls i:hover {
+  color: #1db954;   /* highlight icons */
+  transform: scale(1.1);
+  transition: all 0.2s ease-in-out;
+}
+
+/* Hover for Library option */
+.lib-option:hover img {
+  transform: scale(1.15);
+  transition: transform 0.2s ease;
+}
+
+/* Hover for buttons (badges) */
+.badge:hover {
+  background-color: #1db954;
+  color: white;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+
+/* Hover for card images */
+.card-img:hover {
+  transform: scale(1.08);
+  transition: transform 0.3s ease;
+}
+
+/* Hover for footer text */
+.footer-text:hover {
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+/* Hover for progress bar */
+.progress-bar input[type="range"]:hover {
+  filter: brightness(1.2);
+  cursor: pointer;
+}
+
+/* Hover for volume slider */
+.player-right input[type="range"]:hover {
+  filter: brightness(1.2);
+  cursor: pointer;
+}
+
